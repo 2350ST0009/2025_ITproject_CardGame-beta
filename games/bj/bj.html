@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ブラックジャック</title>
+  <link rel="stylesheet" href="css\bj.css">
+</head>
+
+<body>
+  <!-- ヘッダー読み込み -->
+  <div id="header-container"></div>
+  
+  <div class="container">
+    <h1>ブラックジャック</h1>
+
+    <div id="game">
+      <div class="buttons">
+        <button onclick="startGame()">ゲーム開始</button>
+        <button onclick="hitCard()" id="hitBtn" disabled>ヒット</button>
+        <button onclick="stand()" id="standBtn" disabled>スタンド</button>
+      </div>
+
+      <!-- ディーラーを先に表示 -->
+      <h2>ディーラー</h2>
+      <div id="dealer-cards" class="cards"></div>
+      <p>合計: <span id="dealer-score">?</span></p>
+
+      <h2>プレイヤー</h2>
+      <div id="player-cards" class="cards"></div>
+      <p>合計: <span id="player-score">0</span></p>
+
+      <div id="result" class="result"></div>
+    </div>
+  </div>
+
+
+  <!-- ヘッダー読み込み -->
+  <script src="../../model/functions.js"></script>
+  <!-- JavaScriptファイル読み込み -->
+  <script src="javascript\bj.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>神経衰弱ゲーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ヘッダー読み込み -->
+  <div id="header-container"></div>
+  <div class="container">
+    <h1>神経衰弱</h1>
+    <button onclick="startGame()">ゲーム開始</button>
+    <label for="difficulty">難易度：</label>
+    <select id="difficulty">
+      <option value="4">4 x 4</option>
+      <option value="6">6 x 6</option>
+    </select>
+    <div id="player-cards" class="card-grid"></div>
+    <p id="result"></p>
+  </div>
+  <!-- ヘッダー読み込み -->
+  <script src="../../model/functions.js"></script>
+  <!-- JavaScriptファイル読み込み -->
+  <script src="script.js"></script>
+</body>
+
+</html>

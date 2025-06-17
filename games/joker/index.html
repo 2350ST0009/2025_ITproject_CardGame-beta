@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ジョーカーを引くな</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- ヘッダー読み込み -->
+  <div id="header-container"></div>
+
+  <div class="container">
+    <h1>ジョーカーを引いたら負け！</h1>
+    <div class="buttons">
+      <button id="start-btn">ゲーム開始</button>
+      <button id="draw-btn" disabled>カードを引く</button>
+    </div>
+
+    <div id="player-cards" class="grid">
+      <div class="cell" id="player-slot"></div>
+      <div class="cell" id="cpu-slot"></div>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <!-- ヘッダー読み込み -->
+  <script src="../../model/functions.js"></script>
+  <!-- JavaScriptファイル読み込み -->
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>記憶ゲーム</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ヘッダー読み込み -->
+  <div id="header-container"></div>
+
+  <h1>🃏 記憶ゲーム</h1>
+  <button id="startBtn">ゲームスタート</button><br>
+
+  <div>ベストスコア：<span id="bestScore">0</span>/10</div>
+
+  <div class="cards" id="cardContainer"></div>
+
+  <form id="answerForm" style="display:none;">
+    <h3>覚えているカードを入力：</h3>
+    <div id="inputFields"></div>
+    <button type="submit">判定</button>
+  </form>
+  <!-- 追加: 難易度選択 -->
+  <label for="level">難易度：</label>
+  <select id="level">
+    <option value="easy">EASY</option>
+    <option value="normal" selected>NORMAL</option>
+    <option value="hard">HARD</option>
+    <option value="expert">EXPERT</option>
+  </select>
+
+
+  <div id="result"></div>
+
+  <!-- ヘッダー読み込み -->
+  <script src="../../model/functions.js"></script>
+  <!-- JavaScriptファイル読み込み -->
+  <script src="script.js"></script>
+</body>
+
+</html>

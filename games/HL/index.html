@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High and Lowゲーム</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <div class="container">
+        <h1>High and Lowゲーム</h1>
+        <div id="game">
+            <!-- ゲームのメイン表示部分：カード名、画像、ボタンがここに動的に入る -->
+            <div class="card" id="currentCard">読み込み中...</div>
+            <img id="currentCardImage" src="" alt="カードの絵柄" style="display: none;">
+            <div class="buttons">
+                <!-- HighとLowの選択ボタン -->
+                <button onclick="guess('High')">High</button>
+                <button onclick="guess('Low')">Low</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ヘッダー読み込み -->
+    <script src="../../model/functions.js"></script>
+
+    <!-- JavaScriptファイル読み込み -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
