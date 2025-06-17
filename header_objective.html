@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>このページの目的</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <!-- ヘッダーをロード -->
-    <div id="header-container"></div>
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="nav-link">ホーム</a>
+            <a href="header_objective.html" class="nav-link">目的</a>
+        </div>
+        <div class="header-right">
+            <span class="team-name">TeamCardGame</span>
+        </div>
+    </header>
 
     <main class="container">
         <h1>このページの目的</h1>
@@ -28,4 +38,5 @@
         loadHeader('header-container');
     </script>
 </body>
+
 </html>

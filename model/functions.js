@@ -46,8 +46,8 @@ function loadHeader(containerId) {
         </style>
         <header>
             <div class="header-left">
-                <a href="C:/_Tech2025/tue34_ITproject/Cardgame_beta/index.html" class="nav-link">ホーム</a>
-                <a href="C:/_Tech2025/tue34_ITproject/Cardgame_beta/header_objective.html" class="nav-link">目的</a>
+                <a href="../../index.html" class="nav-link">ホーム</a>
+                <a href="../../header_objective.html" class="nav-link">目的</a>
             </div>
             <div class="header-right">
                 <span class="team-name">TeamCardGame</span>
