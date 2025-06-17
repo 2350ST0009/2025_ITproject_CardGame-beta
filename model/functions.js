@@ -7,7 +7,7 @@ function loadHeader(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
     // 面倒くさくて絶対パス。
-    // あとで変えろ
+    // 相対パスに変更済み。メインのindexのみヘッダーを読み込まないことで解決
     container.innerHTML = `
 <style>
             header {
