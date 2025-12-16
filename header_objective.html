@@ -4,44 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>このページの目的</title>
-    <!-- ベースcss -->
+    <title>このページの目標</title>
+    
     <link rel="stylesheet" href="css/style.css">
-    <!-- 追加css -->
-     <link rel="stylesheet" href="css/header_objective.css">
+    <link rel="stylesheet" href="css/header_objective.css">
 </head>
 
 <body>
-    <!-- ヘッダー -->
-    <header>
-        <div class="header-left">
-            <a href="index.html" class="nav-link">ホーム</a>
-            <a href="header_objective.html" class="nav-link">目的</a>
-        </div>
-        <div class="header-right">
-            <span class="team-name">TeamCardGame</span>
-        </div>
-    </header>
+    <div id="header-container"></div>
 
-    <!-- メイン -->
     <main class="container">
-        <h1>このページの目的</h1>
+        <h1>このページの目標</h1>
+        
         <section>
             <h2>概要</h2>
             <p>Deck of Cards APIを用いて様々なカードゲームを実装することを目的として3人チームで開発しました。</p>
         </section>
+        
         <section>
             <h2>カードゲームを選んだ理由</h2>
-            <p>Deck of Cards APIは、カードゲームの実装に特化した機能を提供しており、開発の効率を大幅に向上させることができます。このAPIを利用することで、カードのシャッフルや配布、ゲームの進行管理などを簡単に実装できるため、私たちはこのAPIを選びました。</p>
+            <p>Deck of Cards APIは、カードゲームの実装に特化した機能を提供しており、開発の効率を大幅に向上させることができます。このAPIを利用することで、カードのシャッフルや配布、ゲームの進行管理などを簡単に実装できるため、htmlやcss、javascriptの復習のために私たちはこのAPIを選びました。</p>
         </section>
     </main>
 
     <script src="model/functions.js"></script>
-    
-    <script>
-        // ヘッダーをロード
-        loadHeader('header-container');
-    </script>
 </body>
 
 </html>

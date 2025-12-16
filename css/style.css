@@ -1,103 +1,204 @@
 @charset "UTF-8";
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #064420;
-    color: #3cc22a;
+/* =========================================
+   1. 変数定義 (ここを変えるだけで全体のテーマが変わります)
+   ========================================= */
+:root {
+    /* 背景：中心が明るい深い緑のグラデーションで「テーブル感」を出す */
+    --bg-gradient: radial-gradient(circle at center, #1e5c38 0%, #0a2915 100%);
+    
+    /* グラスモーフィズム（すりガラス）設定 */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    
+    /* テキストとアクセント */
+    --text-main: #ffffff;
+    --text-muted: #cfd8dc;
+    --accent-color: #ffd700; /* ゴールド（勝利や強調） */
+    --button-bg: #2e7d32;
+    --button-hover: #4caf50;
 }
 
-header {
+/* =========================================
+   2. 基本設定
+   ========================================= */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* 少しモダンなフォント優先順位 */
+    margin: 0;
+    padding: 0;
+    background: var(--bg-gradient);
+    background-attachment: fixed; /* スクロールしても背景を固定 */
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* =========================================
+   3. ヘッダー (調整版：程よい大きさと明確な境界)
+   ========================================= */
+.nav-link,
+header a,
+#header-container a {
+    text-decoration: none;
+    color: var(--text-muted);
+    
+    /* 1.5remから1.2remへ縮小（標準より少し大きく、見やすいサイズ） */
+    font-size: 1.1rem; 
+    font-weight: bold;
+    
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    position: relative;
+    margin-right: 25px;
+}
+
+.nav-link:hover,
+header a:hover,
+#header-container a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+header,
+#header-container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #2e7d32;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    
+    /* 上下の余白を少し減らしてスリムに (20px -> 15px) */
+    padding: 12px 30px; 
+    
+    /* 濃い背景と線は維持して、境界をはっきりさせる */
+    background: rgba(5, 30, 15, 0.95); 
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.header-left {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: #f0f0f0;
-    font-size: 1.2em;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #c8e6c9;
-}
-
-.header-right {
-    font-size: 0.9em;
-    color: #e8f5e9;
-}
-
-.team-name {
-    font-weight: bold;
-    text-align: right;
-}
-
+/* =========================================
+   4. メインコンテンツ & グリッド
+   ========================================= */
 main {
-    padding: 20px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .game-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    display: grid;
+    /* 画面幅に合わせて自動で列数を調整 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
+/* =========================================
+   5. ゲームカード (ここを大幅にモダン化)
+   ========================================= */
 .game-item {
-    background: #fff;
-    color: #333;
-    border-radius: 10px;
+    background: var(--glass-bg);
+    border: var(--glass-border);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    width: 300px;
-    text-align: center;
+    backdrop-filter: blur(5px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-item:hover {
+    transform: translateY(-5px); /* 浮き上がるアニメーション */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .game-item img {
     width: 100%;
-    height: auto;
+    height: 180px; /* 画像の高さを統一 */
+    object-fit: cover; /* 画像比率を崩さずトリミング */
+    border-bottom: var(--glass-border);
 }
 
 .game-info {
-    padding: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* ボタンを下揃えにするため */
 }
 
 .game-info h2 {
     margin: 0 0 10px 0;
-    font-size: 1.5em;
+    font-size: 1.4em;
+    color: var(--text-main);
 }
 
 .game-info p {
-    margin: 0 0 15px 0;
-    font-size: 1em;
-    color: #666;
+    margin: 0 0 20px 0;
+    font-size: 0.95em;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex-grow: 1;
 }
+
+/* =========================================
+   6. ボタンデザイン
+   ========================================= */
 .button {
     display: inline-block;
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, var(--button-bg), var(--button-hover));
     color: white;
-    padding: 10px 20px;
+    padding: 12px 0;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-    font-size: 1em;
+    border-radius: 50px; /* 丸みのあるモダンな形状 */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+    transition: all 0.3s ease;
+    width: 100%; /* カード幅いっぱいに */
 }
 
 .button:hover {
-    background-color: #45a049;
+    background: linear-gradient(135deg, #43a047, #66bb6a);
+    box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+    transform: scale(1.02);
+}
+
+/* =========================================
+   7. プレイ画面・カード用スタイル (追加分)
+   ========================================= */
+
+/* デッキAPIから取得したカード画像全般へのスタイル */
+img[src*="deckofcardsapi.com"] {
+    border-radius: 8px; /* カードの角を丸くする */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* 影をつけて浮いている感を出す */
+    transition: transform 0.3s ease; /* 動きをなめらかに */
+}
+
+/* 特定のIDに対するスタイル (High & Lowなど) */
+#currentCardImage {
+    max-width: 200px; /* 画面からはみ出さないように制限 */
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px auto; /* 中央寄せ */
+    
+    /* ふわっと表示させるアニメーション */
+    animation: dealCard 0.5s ease-out;
+}
+
+/* カードが配られるときのアニメーション定義 */
+@keyframes dealCard {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
