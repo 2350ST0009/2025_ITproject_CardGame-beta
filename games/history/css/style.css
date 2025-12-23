@@ -1,0 +1,103 @@
+/* ゲーム全体のコンテナを中央に配置 */
+body {
+    display: flex;
+    flex-direction: column; /* ヘッダーとコンテンツを縦に並べる */
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    margin-top: 50px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1); /* 共通スタイルに合わせた透明感 */
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px;
+}
+
+h1 {
+    color: var(--accent-color, #ffd700);
+    margin-bottom: 20px;
+}
+
+/* カード履歴の表示エリア */
+.hand {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 20px;
+    margin: 20px 0;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    min-height: 150px; /* カードがない時の高さ確保 */
+    align-items: center;
+}
+
+/* カード画像 */
+.card {
+    flex-shrink: 0;
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* モード選択ボタンのレイアウト */
+#mode-selection {
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:hover:not(:disabled) {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+button:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+#draw-button {
+    background: linear-gradient(135deg, #ff9800, #ffc107);
+    color: #333;
+}
+
+.reset-button {
+    background: linear-gradient(135deg, #d32f2f, #f44336) !important;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: var(--accent-color, #ffd700);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    font-weight: bold;
+    min-height: 1.6em;
+}

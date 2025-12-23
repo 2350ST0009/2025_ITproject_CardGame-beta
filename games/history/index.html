@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カードヒストリー</title>
+    <!-- ベーススタイル -->
+    <link rel="stylesheet" href="../../css/style.css">
+    <!-- ゲーム固有スタイル -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- ヘッダー読み込み -->
+    <div id="header-container"></div>
+    <div class="game-container">
+        <h1>カードヒストリーゲーム</h1>
+
+        <div id="mode-selection">
+            <button id="red-3">赤 3連続</button>
+            <button id="red-5">赤 5連続</button>
+            <button id="black-3">黒 3連続</button>
+            <button id="black-5">黒 5連続</button>
+        </div>
+
+        <div class="controls">
+            <button id="draw-button" disabled>カードを引く</button>
+            <button id="reset-button" class="reset-button">ゲームをリセット</button>
+        </div>
+
+        <div class="hand" id="history">
+            <!-- カードが追加される -->
+        </div>
+
+        <div id="result"></div>
+    </div>
+
+    <!-- ヘッダー読み込み -->
+    <script src="../../model/functions.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
