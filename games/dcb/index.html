@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Battle RPG</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Card Battle</h1>
+        
+        <div id="game">
+            <div class="status-area">
+                <div class="hp-box">
+                    <span class="hp-label">PLAYER <span id="p-hp-num">100</span>/100</span>
+                    <div class="hp-gauge-frame">
+                        <div id="p-hp-bar" class="hp-gauge"></div>
+                    </div>
+                </div>
+                <div class="hp-box" style="text-align: right;">
+                    <span class="hp-label">ENEMY <span id="e-hp-num">100</span>/100</span>
+                    <div class="hp-gauge-frame">
+                        <div id="e-hp-bar" class="hp-gauge"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="battle-field">
+                <div class="unit-slot">
+                    <span class="unit-name">YOU</span>
+                    <div id="p-card-area">
+                        <div class="card" style="background: rgba(0,0,0,0.2); border: 2px dashed #555;"></div>
+                    </div>
+                    <div id="p-damage" class="damage-text"></div>
+                </div>
+
+                <div class="unit-slot">
+                    <span class="unit-name">BOSS</span>
+                    <div id="e-card-area">
+                        <div class="card" style="background: rgba(0,0,0,0.2); border: 2px dashed #555;"></div>
+                    </div>
+                    <div id="e-damage" class="damage-text"></div>
+                </div>
+            </div>
+
+            <div id="result">Ready...</div>
+
+            <div>
+                <button id="battleBtn">ATTACK</button>
+                <button id="resetBtn" style="display: none; background-color: #d32f2f;">RESTART</button>
+            </div>
+
+            <div class="type-chart">
+                <strong>Rules</strong><br>
+                ♠ > ♥ > ♣ > ♦ > ♠<br>
+                <span style="color: #ffeb3b;">Weakness hit = x2 Damage</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
