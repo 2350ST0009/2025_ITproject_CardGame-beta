@@ -15,7 +15,8 @@ body {
   margin: 40px auto;
   padding: 30px 40px;
   width: 90%;
-  max-width: 650px;
+  max-width: 1100px;
+  /* EXPERT 10枚が1列で並ぶ十分な広さ */
   background: linear-gradient(145deg, #176b29, #0b3d15);
   border-radius: 12px;
   box-shadow:
@@ -30,7 +31,7 @@ h1 {
   margin-bottom: 25px;
   font-weight: 700;
   letter-spacing: 1.2px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 /* ゲームエリア */
@@ -53,7 +54,7 @@ button {
   box-shadow: 0 5px 10px rgba(46, 125, 50, 0.6);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
   font-weight: 600;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 button:hover {
@@ -70,16 +71,19 @@ button:focus {
 #cardContainer {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  /* PCでは絶対に1列にする */
   gap: 12px;
   margin-top: 20px;
+  overflow-x: auto;
+  /* 万が一はみ出してもスクロールで対応 */
 }
 
 .card {
   width: 100px;
   height: 145px;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
   overflow: hidden;
   position: relative;
   user-select: none;
@@ -97,7 +101,8 @@ button:focus {
 
 /* 裏面：画像を差し替える */
 .card.hidden img {
-  content: url("https://deckofcardsapi.com/static/img/back.png"); /* 裏面画像に置き換え */
+  content: url("https://deckofcardsapi.com/static/img/back.png");
+  /* 裏面画像に置き換え */
 }
 
 /* 回答フォーム */
@@ -139,7 +144,7 @@ select:focus {
   margin-top: 20px;
   font-size: 1.4em;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* 難易度セレクタ */
@@ -154,4 +159,96 @@ label[for="level"],
   font-size: 1.1em;
   color: #ffeb3b;
   font-weight: bold;
+}
+
+/* --- スマートフォン・レスポンシブ対応 --- */
+
+@media screen and (max-width: 480px) {
+
+  /* タイトルとコンテナの調整 */
+  h1 {
+    font-size: 1.5em !important;
+    margin-top: 15px !important;
+  }
+
+  .container {
+    width: 95% !important;
+    padding: 20px 10px !important;
+    margin: 10px auto !important;
+  }
+
+  /* カード表示エリア：横に並び切らないため、サイズを縮小 */
+  #cardContainer {
+    display: grid !important;
+    grid-template-columns: repeat(var(--cols, 3), 1fr) !important;
+    justify-items: center;
+    gap: 15px !important;
+    width: 100% !important;
+    /* 重なりを発生させる flex-wrap を無効化 */
+    flex-wrap: nowrap !important;
+  }
+
+  .card {
+    width: 70px !important;
+    height: 102px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5) !important;
+    margin: 0 !important;
+    /* position: relative が共通設定で悪影響を与えないよう固定 */
+    left: 0 !important;
+  }
+
+  /* --- 影の原因：共通CSSの img 重なり設定を完全に強制解除する --- */
+  #cardContainer .card img {
+    margin-left: 0 !important;
+    /* これが「不自然な影」の正体です */
+    position: static !important;
+    /* 位置固定を解除 */
+    width: 100% !important;
+    transform: none !important;
+    /* 意図しないズレを防止 */
+  }
+
+  /* 2枚目以降を重ねる設定がどこかに残っていても強制的に0にする */
+  #cardContainer img:not(:first-child) {
+    margin-left: 0 !important;
+  }
+
+  /* 入力フォーム：縦に長くなりすぎるのを防ぐため2列レイアウトに変更 */
+  /* 入力フォームのレイアウト調整 */
+  #inputFields {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  .input-row {
+    flex-direction: column !important;
+    padding: 5px !important;
+    font-size: 0.8em !important;
+  }
+
+  .input-row label {
+    font-size: 0.8em !important;
+    margin-bottom: 5px !important;
+  }
+
+  select {
+    width: 100% !important;
+    font-size: 0.9em !important;
+    padding: 8px 4px !important;
+  }
+
+  /* 判定ボタンを押しやすく */
+  #answerForm button[type="submit"] {
+    width: 80% !important;
+    margin-top: 20px !important;
+    padding: 15px !important;
+    font-size: 1.1em !important;
+  }
+
+  /* 難易度選択エリア */
+  label[for="level"] {
+    display: block !important;
+    margin-top: 15px !important;
+  }
 }

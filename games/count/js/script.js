@@ -22,6 +22,9 @@ startBtn.addEventListener("click", async () => {
   const level = levelSelect.value;
   const { count, delay } = levelSettings[level];
 
+  // 追加: モバイル用に「全枚数の半分」を列数としてCSS変数にセット
+  cardContainer.style.setProperty('--cols', Math.ceil(count / 2));
+
   resultDiv.textContent = "";
   inputFields.innerHTML = "";
   cardContainer.innerHTML = "";
@@ -68,6 +71,9 @@ function showInputForm(count) {
   }
 
   answerForm.style.display = "block";
+
+  // スマホ対応：フォームが表示されたら自動スクロール
+  answerForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 answerForm.addEventListener("submit", (e) => {
