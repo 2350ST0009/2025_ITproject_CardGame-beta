@@ -92,3 +92,164 @@ button:focus {
   margin-top: 20px;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
+
+/* コンテナの幅をスマホ向けに調整 */
+.container {
+  margin: 20px auto; /* 余白を少し詰める */
+  padding: 20px;
+  width: 95%; /* スマホでは幅を広く取る */
+  box-sizing: border-box;
+}
+
+/* カード表示エリアの調整 */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* スマホでは間隔を少し狭める */
+  margin: 10px 0 15px;
+  flex-wrap: wrap; /* カードが増えた時に折り返せるようにする */
+}
+
+/* カード画像のサイズをレスポンシブに */
+.cards img {
+  width: 18vw; /* 画面幅（Viewport Width）に合わせて可変にする */
+  max-width: 100px; /* PCでは大きくなりすぎないように制限 */
+  min-width: 60px;  /* スマホでも小さくなりすぎないように */
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ボタンの配置をスマホ向けに最適化 */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* 画面が狭いときに自動で折り返す */
+  gap: 10px;       /* ボタン同士の間隔 */
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.buttons button {
+  flex: 1; /* ボタンを均等な幅にする */
+  margin: 5px 0;
+  padding: 12px 10px; /* 左右のパディングを減らす */
+  font-size: 0.9em; /* 文字を少し小さくして一行に収める */
+  white-space: nowrap; /* 改行を防ぐ */
+}
+
+/* スマホ用のメディアクエリ */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .container {
+    padding: 15px 10px;
+  }
+
+  /* 2枚目以降を少し重ねることで省スペース化（オプション） */
+  .cards img:not(:first-child) {
+    margin-left: -20px; 
+  }
+}
+
+/* スマホ用のメディアクエリ */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .container {
+    width: 95% !important; /* 共通設定を上書き */
+    padding: 20px 10px !important;
+    margin: 10px auto !important;
+  }
+
+  /* ボタンコンテナを縦並びに強制 */
+  .buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* ボタン自体の修正：ここが重要 */
+  .buttons button,
+  #game button {
+    width: 100% !important; /* 横幅いっぱい */
+    margin: 0 !important;   /* 外側の余白を消す */
+    padding: 15px 0 !important; /* 左右のパディングを0にして文字領域を最大化 */
+    font-size: 1.1rem !important;
+    
+    /* 改行を絶対に防ぐ3点セット */
+    display: block !important;
+    white-space: nowrap !important; 
+    overflow: hidden !important;
+    
+    /* 共通CSSの影響をリセット */
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  /* カードサイズ調整 */
+  .cards img {
+    width: 22vw !important;
+    max-width: 80px !important;
+  }
+
+  /* カードを重ねてスペースを稼ぐ */
+  .cards img:not(:first-child) {
+    margin-left: -30px !important; 
+  }
+}/* スマホ用のメディアクエリ */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  
+  .container {
+    width: 95% !important; /* 共通設定を上書き */
+    padding: 20px 10px !important;
+    margin: 10px auto !important;
+  }
+
+  /* ボタンコンテナを縦並びに強制 */
+  .buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* ボタン自体の修正：ここが重要 */
+  .buttons button,
+  #game button {
+    width: 100% !important; /* 横幅いっぱい */
+    margin: 0 !important;   /* 外側の余白を消す */
+    padding: 15px 0 !important; /* 左右のパディングを0にして文字領域を最大化 */
+    font-size: 1.1rem !important;
+    
+    /* 改行を絶対に防ぐ3点セット */
+    display: block !important;
+    white-space: nowrap !important; 
+    overflow: hidden !important;
+    
+    /* 共通CSSの影響をリセット */
+    box-sizing: border-box !important;
+    min-width: 0 !important;
+  }
+
+  /* カードサイズ調整 */
+  .cards img {
+    width: 22vw !important;
+    max-width: 80px !important;
+  }
+
+  /* カードを重ねてスペースを稼ぐ */
+  .cards img:not(:first-child) {
+    margin-left: -30px !important; 
+  }
+}

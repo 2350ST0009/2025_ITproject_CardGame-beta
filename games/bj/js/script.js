@@ -81,14 +81,32 @@ function getScore(hand) {
   return total;
 }
 
+// hitCard関数を修正
 async function hitCard() {
-  const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
-  const card = (await res.json()).cards[0];
-  playerHand.push(card);
-  renderCards();
+  const hitBtn = document.getElementById("hitBtn");
+  const standBtn = document.getElementById("standBtn");
 
-  if (getScore(playerHand) > 21) {
-    endGame();
+  // 通信中はボタンを無効化
+  hitBtn.disabled = true;
+  standBtn.disabled = true;
+
+  try {
+    const res = await fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`);
+    const card = (await res.json()).cards[0];
+    playerHand.push(card);
+    renderCards();
+
+    if (getScore(playerHand) > 21) {
+      endGame();
+    } else {
+      // バーストしていなければボタンを元に戻す
+      hitBtn.disabled = false;
+      standBtn.disabled = false;
+    }
+  } catch (e) {
+    console.error("カードが引けませんでした", e);
+    hitBtn.disabled = false;
+    standBtn.disabled = false;
   }
 }
 
