@@ -45,16 +45,16 @@ function startGame() {
     .then(res => res.json())
     .then(data => {
       drawPile = data.cards;
-      
+
       // 最初の16枚を配置
       for (let i = 0; i < gridRows * gridCols; i++) {
         const r = Math.floor(i / gridCols);
         const c = i % gridCols;
         if (drawPile.length > 0) {
-            grid[r][c] = drawPile.shift();
+          grid[r][c] = drawPile.shift();
         }
       }
-      
+
       renderGrid();
       drawBtn.disabled = false;
       startBtn.disabled = true;
@@ -93,6 +93,9 @@ function drawCard() {
   placeCard(card);
   renderGrid();
   checkGameOver();
+
+  // 追加: カードを引いたら一番下までスムーズにスクロール
+  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
 }
 
 function placeCard(card) {
@@ -119,7 +122,7 @@ function renderGrid() {
   for (let r = 0; r < gridRows; r++) {
     for (let c = 0; c < gridCols; c++) {
       const card = grid[r][c];
-      
+
       // レイアウト用セル
       const cell = document.createElement("div");
       cell.className = "cell";
@@ -135,10 +138,10 @@ function renderGrid() {
         if (selectedCard && selectedCard.r === r && selectedCard.c === c) {
           img.classList.add("selected");
         }
-        
+
         cell.appendChild(img);
       }
-      
+
       playerCards.appendChild(cell);
     }
   }
@@ -150,9 +153,9 @@ function cardClick(r, c) {
 
   // 同じカードをクリックしたら選択解除
   if (selectedCard && selectedCard.r === r && selectedCard.c === c) {
-      selectedCard = null;
-      renderGrid();
-      return;
+    selectedCard = null;
+    renderGrid();
+    return;
   }
 
   // 1枚目の選択
@@ -233,20 +236,20 @@ function checkGameOver() {
   }
 
   if (drawPile.length === 0) {
-      drawBtn.disabled = true;
+    drawBtn.disabled = true;
   }
 
   // クリア判定
   if (!hasCardOnGrid && drawPile.length === 0) {
-      result.textContent = "🎉 GAME CLEAR! おめでとうございます！ 🎉";
-      result.style.color = "#4caf50";
-      return;
+    result.textContent = "🎉 GAME CLEAR! おめでとうございます！ 🎉";
+    result.style.color = "#4caf50";
+    return;
   }
 
   // 手詰まり判定
   if (drawPile.length === 0 && hasCardOnGrid && !hasPairs()) {
-      result.textContent = "GAME OVER... (手詰まり)";
-      result.style.color = "#ff5252";
+    result.textContent = "GAME OVER... (手詰まり)";
+    result.style.color = "#ff5252";
   }
 }
 
@@ -255,18 +258,18 @@ function hasPairs() {
     for (let c = 0; c < gridCols; c++) {
       const card = grid[r][c];
       if (!card) continue;
-      
+
       for (let dr = -1; dr <= 1; dr++) {
         for (let dc = -1; dc <= 1; dc++) {
           if (dr === 0 && dc === 0) continue;
           const nr = r + dr;
           const nc = c + dc;
-          
+
           if (nr >= 0 && nr < gridRows && nc >= 0 && nc < gridCols) {
-             const neighbor = grid[nr][nc];
-             if (neighbor && normalizeValue(neighbor.value) === normalizeValue(card.value)) {
-               return true;
-             }
+            const neighbor = grid[nr][nc];
+            if (neighbor && normalizeValue(neighbor.value) === normalizeValue(card.value)) {
+              return true;
+            }
           }
         }
       }

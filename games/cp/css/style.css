@@ -159,3 +159,66 @@ button:disabled {
   color: #aaa;
   font-weight: bold;
 }
+
+/* --- スマートフォン・レスポンシブ対応 --- */
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 95% !important;
+    padding: 20px 10px !important;
+    margin: 10px auto !important;
+  }
+
+  h1 {
+    font-size: 1.5em !important;
+  }
+
+  /* カードグリッド：固定幅(120px)を解除し、画面幅に合わせる */
+  #player-cards {
+    grid-template-columns: repeat(4, 1fr) !important; /* 常に4列を維持 */
+    gap: 8px !important; /* 隙間を狭める */
+    padding: 0 5px;
+  }
+
+  /* セルのアスペクト比を維持 */
+  .cell {
+    width: 100% !important;
+  }
+
+  .card {
+    border-radius: 4px !important;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.5) !important;
+  }
+
+  /* 選択中の枠線をスマホ向けに少し細く */
+  .card.selected {
+    border-width: 3px !important;
+  }
+
+  /* 操作ボタンを横並びで押しやすく */
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .buttons button {
+    flex: 1;
+    margin: 0 !important;
+    padding: 12px 5px !important;
+    font-size: 0.9em !important;
+    white-space: nowrap;
+  }
+
+  /* 山札エリアを少しコンパクトに */
+  #draw-btn {
+    width: 80px !important;
+    height: 112px !important;
+  }
+
+  #result {
+    font-size: 1.2em !important;
+    min-height: 1.2em;
+  }
+}
